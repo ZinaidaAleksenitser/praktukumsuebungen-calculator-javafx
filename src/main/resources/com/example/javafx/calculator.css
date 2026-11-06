@@ -1,0 +1,6 @@
+.digit-button {
+    -fx-background-color: #353535;
+    -fx-text-fill: white;
+    -fx-background-radius: 16;
+    -fx-font-size: 22px;
+}

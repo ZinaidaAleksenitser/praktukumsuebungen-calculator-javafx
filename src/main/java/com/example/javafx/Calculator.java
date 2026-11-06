@@ -5,36 +5,36 @@ import java.math.RoundingMode;
 
 public class Calculator {
 
-    //method to check
-
-    public boolean canAppendDecemalComma(String currentValue, String newDigit){
-
+    public boolean isDuplicateDecimalPoint(String currentValue, String newDigit){
         return (currentValue.contains(".") && newDigit.equals("."));
     }
 
-    //calculate
-
     public BigDecimal calculate(BigDecimal value1, BigDecimal value2, String operation){
+        BigDecimal result;
         switch (operation){
             case "+":
-                return value1.add(value2);
-                break;
+                result = value1.add(value2);
+            break;
             case "-":
-                return value1.subtract(value2);
-                break;
+                result = value1.subtract(value2);
+            break;
             case "*":
-                return value1.multiply(value2);
-                break;
+                result = value1.multiply(value2);
+            break;
             case"/":
-                if(value1.(BigDecimal.ZERO)){
-
-                }else {
-                    display.setText(bufferValue.divide(value, 10, RoundingMode.HALF_UP ).stripTrailingZeros().toPlainString());
+                if(value2.compareTo(BigDecimal.ZERO)==0){
+                    throw new ArithmeticException("Cannot divide by zero");
+                } else {
+                    result = value1.divide(value2, 10, RoundingMode.HALF_UP );
                 }
                 break;
+            default:
+                throw new IllegalArgumentException("Invalid operation");
         }
+        return result;
     }
 
-
-
+    public BigDecimal getPlusMinusValue(BigDecimal value) {
+        return value.negate();
+    }
 }
