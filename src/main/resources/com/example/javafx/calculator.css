@@ -1,6 +1,81 @@
 .digit-button {
     -fx-background-color: #353535;
     -fx-text-fill: white;
-    -fx-background-radius: 16;
     -fx-font-size: 22px;
 }
+.digit-button:hover {
+    -fx-background-color: #484848;
+}
+
+.digit-button:pressed {
+    -fx-background-color: #606060;
+}
+
+.digit-operation {
+    -fx-background-color: #30AD6B;
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+}
+
+.digit-operation:hover {
+    -fx-background-color: #41C985;
+}
+
+.digit-operation:pressed {
+    -fx-background-color: #258B56;
+}
+
+.root {
+    -fx-background-color: #282B30;
+    -fx-background-radius: 22;
+    -fx-padding: 10;
+    -fx-spacing: 8;
+}
+
+.minimize-button,
+.maximize-button,
+.close-button {
+    -fx-background-radius: 50%;
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+    -fx-padding: 0;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #282B30;
+    -fx-cursor: hand;
+}
+
+.minimize-button {
+    -fx-background-color: #F4A340;
+}
+
+.maximize-button {
+    -fx-background-color: #F08B56;
+}
+
+.close-button {
+    -fx-background-color: #F06455;
+}
+
+.minimize-button:hover,
+.maximize-button:hover,
+.close-button:hover {
+    -fx-opacity: 0.8;
+}
+
+.output-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 38px;
+    -fx-font-weight: 300;
+    -fx-alignment: center-right;
+    -fx-padding: 0 10 0 10;
+    -fx-border-width: 0;
+}
+/*.calculator-root {*/
+/*    -fx-background-color: #282B30;*/
+/*    -fx-background-radius: 25;*/
+/*    -fx-padding: 20;*/
+/*}*/

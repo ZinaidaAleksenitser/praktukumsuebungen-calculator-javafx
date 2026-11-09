@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.math.BigDecimal;
 
@@ -33,24 +34,24 @@ public class CalculatorController {
     @FXML
     public void handleOperation(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
-        processOperation(operation);
+        processOperation(button.getText());
     }
 
     @FXML
     public void handleEquals() {
-        System.out.println("call equals from gui");
-        if(isDisplayBlocked || display.getText().isEmpty()) return;
+        if (isDisplayBlocked || display.getText().isEmpty()) return;
         if (value1 == null || operation == null) {
             return;
         }
-        value2 = new BigDecimal(display.getText());
-        try {
-            value1 = calculator.calculate(value1, value2, operation); //continue calculating
-            display.setText(value1.stripTrailingZeros().toPlainString());
-        }catch (ArithmeticException e){
-            display.setText("ERROR");
-            isDisplayBlocked = true;
-        }
+            value2 = new BigDecimal(display.getText());
+            try {
+                value1 = calculator.calculate(value1, value2, operation);
+                display.setText(value1.stripTrailingZeros().toPlainString());
+                setDisplaySize(display);
+            } catch (ArithmeticException e) {
+                display.setText("ERROR");
+                isDisplayBlocked = true;
+            }
     }
 
     @FXML
@@ -97,8 +98,9 @@ public class CalculatorController {
             handleClear();
             event.consume();
         }
-
     }
+
+
 
     private void appendDigit(String digit){
         if(isDisplayBlocked) return;
@@ -106,7 +108,18 @@ public class CalculatorController {
         if(calculator.isDuplicateDecimalPoint(display.getText(), digit)) {
             return;
         }
+        setDisplaySize(display);
+
+
         display.appendText(digit);
+    }
+
+    private void setDisplaySize(TextField display) {
+        if (display.getText().length() >= 9) {
+            display.setStyle("-fx-font-size: 24px;");
+        } else {
+            display.setStyle("-fx-font-size: 38px;");
+        }
     }
 
     private void processOperation(String newOperation){
@@ -116,4 +129,28 @@ public class CalculatorController {
         display.clear();
     }
 
+    @FXML
+    public void handleMinimize() {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    public void handleMaximize() {
+        Stage stage = (Stage) root.getScene().getWindow();
+        boolean maximized = !stage.isMaximized();
+        stage.setMaximized(maximized);
+
+        if (maximized) {
+            root.setStyle("-fx-background-radius: 0;");
+        } else {
+            root.setStyle("-fx-background-radius: 28;");
+        }
+    }
+
+    @FXML
+    private void handleClose() {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+    }
 }

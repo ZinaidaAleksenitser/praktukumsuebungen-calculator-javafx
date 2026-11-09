@@ -6,40 +6,64 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
 <VBox fx:id="root"
-      alignment="CENTER"
-      spacing="20.0"
+      alignment="TOP_CENTER"
+      spacing="8.0"
       onKeyPressed="#handleKeyPressed"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.javafx.CalculatorController">
+      fx:controller="com.example.javafx.CalculatorController"
+      styleClass="calculator-root">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="50.0" left="12.0" right="12.0" top="12.0"/>
     </padding>
-    <TextField fx:id="display" prefHeight="60.0" prefWidth="218.0" maxWidth="218.0" editable="false" alignment="CENTER_RIGHT" style="-fx-font-size: 20px;"/>
+    <HBox alignment="CENTER_RIGHT" spacing="8">
+
+        <Button text="−"
+                styleClass="minimize-button"
+                onAction="#handleMinimize"/>
+
+        <Button text="□"
+                styleClass="maximize-button"
+                onAction="#handleMaximize"/>
+
+        <Button text="×"
+                styleClass="close-button"
+                onAction="#handleClose"/>
+
+    </HBox>
+    <TextField fx:id="display"
+               prefHeight="90.0"
+               prefWidth="218.0"
+               maxWidth="218.0"
+               minHeight="90.0"
+               editable="false"
+               alignment="CENTER_RIGHT"
+               styleClass="output-field"/>
     <GridPane hgap="5.0" vgap="5.0" alignment="CENTER">
-        <Button prefHeight="50.0" prefWidth="50.0" text="C"  GridPane.columnIndex="3" GridPane.rowIndex="0" focusTraversable="false"  onAction="#handleClear"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="±"  GridPane.columnIndex="2" GridPane.rowIndex="0" focusTraversable="false"  onAction="#handlePlusMinusSign"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="C"  GridPane.columnIndex="3" GridPane.rowIndex="0" focusTraversable="false" styleClass="digit-button" onAction="#handleClear"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="±"  GridPane.columnIndex="2" GridPane.rowIndex="0" focusTraversable="false" styleClass="digit-button" onAction="#handlePlusMinusSign"/>
 
         <Button prefHeight="50.0" prefWidth="50.0" text="8"  GridPane.columnIndex="1" GridPane.rowIndex="1" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="9"  GridPane.columnIndex="2" GridPane.rowIndex="1" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="7"  GridPane.columnIndex="0" GridPane.rowIndex="1" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="/"  GridPane.columnIndex="3" GridPane.rowIndex="1" focusTraversable="false"  onAction="#handleOperation"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="/"  GridPane.columnIndex="3" GridPane.rowIndex="1" focusTraversable="false" styleClass="digit-operation" onAction="#handleOperation"/>
 
         <Button prefHeight="50.0" prefWidth="50.0" text="4"  GridPane.columnIndex="0" GridPane.rowIndex="2" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="5"  GridPane.columnIndex="1" GridPane.rowIndex="2" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="6"  GridPane.columnIndex="2" GridPane.rowIndex="2" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="*"  GridPane.columnIndex="3" GridPane.rowIndex="2" focusTraversable="false"  onAction="#handleOperation"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="*"  GridPane.columnIndex="3" GridPane.rowIndex="2" focusTraversable="false" styleClass="digit-operation" onAction="#handleOperation"/>
 
         <Button prefHeight="50.0" prefWidth="50.0" text="1"  GridPane.columnIndex="0" GridPane.rowIndex="3" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="2"  GridPane.columnIndex="1" GridPane.rowIndex="3" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="3"  GridPane.columnIndex="2" GridPane.rowIndex="3" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="-"  GridPane.columnIndex="3" GridPane.rowIndex="3" focusTraversable="false"  onAction="#handleOperation"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="-"  GridPane.columnIndex="3" GridPane.rowIndex="3" focusTraversable="false" styleClass="digit-operation" onAction="#handleOperation"/>
 
         <Button prefHeight="50.0" prefWidth="50.0" text="0"  GridPane.columnIndex="0" GridPane.rowIndex="4" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
         <Button prefHeight="50.0" prefWidth="50.0" text="."  GridPane.columnIndex="1" GridPane.rowIndex="4" focusTraversable="false" styleClass="digit-button" onAction="#handleDigit"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="="  GridPane.columnIndex="2" GridPane.rowIndex="4" focusTraversable="false"  onAction="#handleEquals"/>
-        <Button prefHeight="50.0" prefWidth="50.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" focusTraversable="false" onAction="#handleOperation"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="="  GridPane.columnIndex="2" GridPane.rowIndex="4" focusTraversable="false" styleClass="digit-operation" onAction="#handleEquals"/>
+        <Button prefHeight="50.0" prefWidth="50.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" focusTraversable="false" styleClass="digit-operation" onAction="#handleOperation"/>
 
     </GridPane>
 </VBox>

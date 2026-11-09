@@ -46,6 +46,7 @@ public class CalculatorTest {
             // Division
             "10, 2, /, 5",
             "7.5, 2.5, /, 3",
+            "9, 2, /, 4.5",
             "-10, 4, /, -2.5"
     })
     public void testCalculate(BigDecimal value1, BigDecimal value2, String operation, BigDecimal expected){
